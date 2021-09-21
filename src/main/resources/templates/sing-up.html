@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+        .bg-img-singup{
+            background: url("https://thumbs.dreamstime.com/b/caricaturista-llenando-un-formulario-de-cuestionario-encuesta-con-l%C3%A1piz-gigante-hombre-dibujos-animados-rellenando-el-comentarios-192507559.jpg");
+            background-size: 100% 100%;
+            /* height: 100%; */
+        }
+        .bg-color-singup{
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 0, 0, 0.205);
+            background-size: 100%;
+        }
+        .logo-singup{
+            width: 50%;
+            text-align: center;
+        }
+        .b-bottom-only{
+            border-top: none!important;
+            border-left: none!important;
+            border-right: none!important;
+        }
+        .no-underline-link{
+            text-decoration: none!important;
+        }
+    </style>
+    </head>
+    <body>
+            <div class="container-fluid">
+        <div class="row d-flex  align-items-stretch">
+            <div class="col-md-6 col-lg-8 bg-img-singup d-none d-lg-block" align="center">
+                <!-- <div class="bg-color-singup">
+                </div> -->
+                <!-- <img src="https://thumbs.dreamstime.com/b/caricaturista-llenando-un-formulario-de-cuestionario-encuesta-con-l%C3%A1piz-gigante-hombre-dibujos-animados-rellenando-el-comentarios-192507559.jpg" alt=""> -->
+            </div>
+            <div class="offset-1 offset-lg-0 col-sm-10 col-lg-4 mb-5">
+                <div align="center">
+                    <img src="transparent.png" alt="" class="logo-singup">
+                    <h1 class="mb-5">Sing Up</h1>
+                </div>
+                <form action="">
+                    <label for="">Full Name</label>
+                    <input type="text" class="form-control mb-3 b-bottom-only" placeholder="Name...">
+                    <label for="">Email</label>
+                    <input type="email" class="form-control mb-3 b-bottom-only" placeholder="Email address...">
+                    <label for="">Username</label>
+                    <input type="text" class="form-control mb-3 b-bottom-only" placeholder="Username...">
+                    <label for="">Password</label>
+                    <input type="password" class="form-control mb-3 b-bottom-only" placeholder="*****************">
+                    <label for="">Repeat Password</label>
+                    <input type="password" class="form-control mb-4 b-bottom-only" placeholder="*****************">
+                    <div align="right">
+                        <button class="btn btn-danger">Sing up</button>  
+                        <!-- <a href="" class="ms-4 me-3 link-primary no-underline-link">Log in</a> -->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>
