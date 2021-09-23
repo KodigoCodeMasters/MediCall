@@ -31,3 +31,18 @@ and open the template in the editor.
 .no-underline-link{
     text-decoration: none!important;
 }
+/*New Appointment Page*/
+.img-newAppointment{
+    width: 35%;
+    text-align: center;
+}
+.bg-blue{
+    background: #2b3d4f
+}
+.width-75{
+    width: 76%;
+    margin-left: 12%;
+}
+.back-icon{
+    width: 15px;
+}
