@@ -31,6 +31,9 @@ and open the template in the editor.
 .no-underline-link{
     text-decoration: none!important;
 }
+.sign-up-media{
+    width:60px;
+}
 /*New Appointment Page*/
 .img-newAppointment{
     width: 35%;
