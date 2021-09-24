@@ -14,7 +14,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -68,15 +67,6 @@ public class Patient implements Serializable {
     
     @Column(name = "patient_status")
     private Character patientStatus;
-    
-    @OneToMany(mappedBy = "idPatient")
-    private List<Query> queryList;
-    
-    @OneToMany(mappedBy = "idPatient")
-    private List<Appointment> appointmentList;
-    
-    @OneToMany(mappedBy = "idPatient")
-    private List<PatientPathologies> patientPathologiesList;
 
     public Patient() {
     }
@@ -195,27 +185,5 @@ public class Patient implements Serializable {
         this.patientStatus = patientStatus;
     }
 
-    public List<Query> getQueryList() {
-        return queryList;
-    }
-
-    public void setQueryList(List<Query> queryList) {
-        this.queryList = queryList;
-    }
-
-    public List<Appointment> getAppointmentList() {
-        return appointmentList;
-    }
-
-    public void setAppointmentList(List<Appointment> appointmentList) {
-        this.appointmentList = appointmentList;
-    }
-
-    public List<PatientPathologies> getPatientPathologiesList() {
-        return patientPathologiesList;
-    }
-
-    public void setPatientPathologiesList(List<PatientPathologies> patientPathologiesList) {
-        this.patientPathologiesList = patientPathologiesList;
-    }
+   
 }
