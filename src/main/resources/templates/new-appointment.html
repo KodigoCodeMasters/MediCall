@@ -21,9 +21,7 @@ and open the template in the editor.
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 mt-4">
-                <a href="/">
-                    <img src="/img/portfolio/back.png" alt="" class="back-icon">
-                </a>
+                <img src="back.png" alt="" class="back-icon">
             </div>
         </div>
     </div>
@@ -31,23 +29,72 @@ and open the template in the editor.
         <div class="row justify-content-center">
             <div class="col-lg-6 col-md-8 col-sm-12 text-center bg-white my-5">
                 <div>
-                    <img src="/img/portfolio/medical-appointment.png" class="img-newAppointment pt-4" alt="">
+                    <img src="medical-appointment.png" class="img-newAppointment pt-4" alt="">
+                    <br>
+                    <h3 class="text-blue-dark mb-3">New Appointment</h3>
                 </div>
                 <div class="width-75">
                     <form action="">
-                            <label for="date">Select the date</label> <br>
-                            <input type="date" id="date" class="form-control">
-                            <br>
-                            <label for="hours">Select the hour</label> <br>
-                            <select name="hours" id="hours" class="form-select mb-5">
+                        <div id="hospital_section">
+                            <label for="hospitals">Select the Hospital</label> <br><br>
+                            <select name="hospitals" id="hospitals" class="form-select mb-5">
+                                <option value="">Rosales Hospital</option>
+                            </select>
+                            <div align="right">
+                                <div class="btn-container-newApp">
+                                    <span class="btn btn-danger" onclick="change('hospital_section','doctor_section')">Doctor</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-none" id="doctor_section">
+                            <label for="doctors">Select Doctor</label> <br><br>
+                            <select name="doctors" id="doctors" class="form-select mb-5">
+                                <option value="">Rosales Hospital</option>
+                            </select>
+                            <div class="btn-container-general">
+                                <div class="btn-container-newApp text-start">
+                                    <span class="btn btn-link" onclick="change('doctor_section','hospital_section')">Hospital</span>
+                                </div>
+                                <div class="btn-container-newApp text-end">
+                                    <span class="btn btn-danger" onclick="change('doctor_section','date_section')">Date</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-none" id="date_section">
+                            <label for="">Select the date</label> <br><br>
+                            <input type="date" class="form-control">
+                            <br> <br>
+                            <div class="btn-container-general">
+                                <div class="btn-container-newApp text-start">
+                                    <span class="btn btn-link" onclick="change('date_section','doctor_section')">Doctor</span>
+                                </div>
+                                <div class="btn-container-newApp text-end">
+                                    <span class="btn btn-danger" onclick="change('date_section','hour_section')">Hour</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-none" id="hour_section">
+                            <label for="">Select the hour</label> <br><br>
+                            <select name="" id="" class="form-select mb-5">
                                 <option value="">7:00</option>
                             </select>
-                            
-                            <button class="btn btn-danger mb-5">Save!</button>
+                            <div class="btn-container-general">
+                                <div class="btn-container-newApp text-start">
+                                    <span class="btn btn-link" onclick="change('hour_section', 'date_section')">Date</span>
+                                </div>
+                                <div class="btn-container-newApp text-end">
+                                    <button class="btn btn-danger">Save!</button>
+                                </div>
+                            </div>
+                        </div>
+                        <br><br>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    <script src="/js/main.js"></script>
 </body>
 </html>

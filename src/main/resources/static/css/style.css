@@ -49,3 +49,13 @@ and open the template in the editor.
 .back-icon{
     width: 15px;
 }
+.text-blue-dark{
+    color: #2b3d4f;
+}
+.btn-container-general{
+    width: 100%;
+    display: flex;
+}
+.btn-container-newApp{
+    width: 50%;
+}
