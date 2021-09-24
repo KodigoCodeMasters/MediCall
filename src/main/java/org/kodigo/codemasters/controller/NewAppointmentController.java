@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Néstor Recinos
  */
 @Controller
-public class AppointmentController {
-    @RequestMapping("/newappointment")
+public class NewAppointmentController {
+    @RequestMapping("/new-appointment")
     public String newappointment(){
-        return "newappointment";
+        return "new-appointment";
     }
 }

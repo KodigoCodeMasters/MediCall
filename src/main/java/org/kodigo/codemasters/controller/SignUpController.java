@@ -18,6 +18,6 @@ public class SignUpController {
     
     @RequestMapping("/signup")
     public String signup() {
-        return "signup";
+        return "sign-up";
     }
 }
