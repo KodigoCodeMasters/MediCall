@@ -6,13 +6,11 @@
 package org.kodigo.codemasters.model;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -33,9 +31,6 @@ public class Pathologies implements Serializable {
     @Column(name = "pathologies")
     private String pathologies;
     
-    @OneToMany(mappedBy = "idPathologies")
-    private List<PatientPathologies> patientPathologiesList;
-
     public Pathologies() {
     }
 
@@ -62,14 +57,6 @@ public class Pathologies implements Serializable {
 
     public void setPathologies(String pathologies) {
         this.pathologies = pathologies;
-    }
-
-    public List<PatientPathologies> getPatientPathologiesList() {
-        return patientPathologiesList;
-    }
-
-    public void setPatientPathologiesList(List<PatientPathologies> patientPathologiesList) {
-        this.patientPathologiesList = patientPathologiesList;
     }
     
 }
