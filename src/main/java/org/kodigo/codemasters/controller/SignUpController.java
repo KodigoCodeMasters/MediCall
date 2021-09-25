@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class SignUpController {
     
-    @RequestMapping("/signup")
+    @RequestMapping("/sign-up")
     public String signup() {
         return "sign-up";
     }

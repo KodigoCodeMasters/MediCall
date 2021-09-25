@@ -41,10 +41,7 @@ public class Users implements Serializable {
     
     @Column(name = "last_names")
     private String lastNames;
-    
-    @Column(name = "users")
-    private String users;
-    
+        
     @Column(name = "email")
     private String email;
     
@@ -72,11 +69,10 @@ public class Users implements Serializable {
         this.idUser = idUser;
     }
 
-    public Users(Integer idUser, String names, String lastNames, String users, String email, String password) {
+    public Users(Integer idUser, String names, String lastNames, String email, String password) {
         this.idUser = idUser;
         this.names = names;
         this.lastNames = lastNames;
-        this.users = users;
         this.email = email;
         this.password = password;
     }
@@ -111,14 +107,6 @@ public class Users implements Serializable {
 
     public void setLastNames(String lastNames) {
         this.lastNames = lastNames;
-    }
-
-    public String getUsers() {
-        return users;
-    }
-
-    public void setUsers(String users) {
-        this.users = users;
     }
 
     public String getEmail() {
