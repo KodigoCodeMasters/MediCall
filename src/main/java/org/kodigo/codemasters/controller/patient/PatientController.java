@@ -3,21 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.kodigo.codemasters.controller;
+package org.kodigo.codemasters.controller.patient;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  *
- * @author JoseM
+ * @author Néstor Recinos
  */
-
 @Controller
-public class IndexAdminController {
-    
-    @RequestMapping("/admin/indexAdmin")
-    public String index(){
-        return "admin/indexAdmin";
+public class PatientController {
+    @RequestMapping("/patient/patient-menu")
+    public String patientmenu(){
+        return "patient/patient-menu";
     }
+    
+    
 }

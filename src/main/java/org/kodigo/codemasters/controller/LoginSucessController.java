@@ -17,11 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author JoseM
  */
 @Controller
-public class HomeController {
-    @RequestMapping("/home")
-    public String home(){
-        return "home";
-    }
+public class LoginSucessController {
     
     @RequestMapping("/success")
     public void loginPageRedirect(HttpServletRequest request, HttpServletResponse response, Authentication authResult) throws IOException {
@@ -30,7 +26,9 @@ public class HomeController {
         if(role.contains("ROLE_ADMIN")){
             response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/admin/indexAdmin"));
         }else if(role.contains("ROLE_USER")){
-            response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/home"));
+            response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/patient/patient-menu"));
+        }else if(role.contains("ROLE_DOCTOR")){
+            response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/doctor/doctor-menu"));
         }
     }
 }

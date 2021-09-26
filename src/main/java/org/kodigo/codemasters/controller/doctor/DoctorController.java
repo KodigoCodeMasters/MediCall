@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.kodigo.codemasters.controller;
+package org.kodigo.codemasters.controller.doctor;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,11 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Néstor Recinos
  */
 @Controller
-public class PatientController {
-    @RequestMapping("/patient-menu")
-    public String patientmenu(){
-        return "patient-menu";
+public class DoctorController {
+    @RequestMapping("/doctor/medical-details")
+    public String medicaldetails(){
+        return "doctor/medical-details";
     }
     
-    
+    @RequestMapping("/doctor/doctor-menu")
+    public String doctorMenu(){
+        return "doctor/doctor-menu";
+    }
 }
