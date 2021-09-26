@@ -39,6 +39,10 @@ public class MedicalDetail implements Serializable {
     @JoinColumn(name = "id_user", referencedColumnName = "USER_ID")
     @ManyToOne(optional = false)
     private User idUser;
+    
+    @JoinColumn(name = "id_department", referencedColumnName = "id_hospital_department")
+    @ManyToOne(optional = false)
+    private HospitalDepartment idDepartment;
 
     public MedicalDetail() {
     }
@@ -47,10 +51,11 @@ public class MedicalDetail implements Serializable {
         this.idMedicalDetail = idMedicalDetail;
     }
 
-    public MedicalDetail(Integer idMedicalDetail, String studies, String workExperience) {
+    public MedicalDetail(Integer idMedicalDetail, String studies, String workExperience, HospitalDepartment idDepartment) {
         this.idMedicalDetail = idMedicalDetail;
         this.studies = studies;
         this.workExperience = workExperience;
+        this.idDepartment = idDepartment;
     }
 
     public Integer getIdMedicalDetail() {
@@ -84,5 +89,14 @@ public class MedicalDetail implements Serializable {
     public void setIdUser(User idUser) {
         this.idUser = idUser;
     }
+
+    public HospitalDepartment getIdDepartment() {
+        return idDepartment;
+    }
+
+    public void setIdDepartment(HospitalDepartment idDepartment) {
+        this.idDepartment = idDepartment;
+    }
+    
     
 }
