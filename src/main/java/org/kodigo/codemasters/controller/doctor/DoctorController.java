@@ -23,4 +23,15 @@ public class DoctorController {
     public String doctorMenu(){
         return "doctor/doctor-menu";
     }
+    
+    @RequestMapping("/doctor/patient")
+    public String Patient(){
+        return "doctor/patient";
+    }
+    
+    @RequestMapping("/doctor/pathologies-patient")
+    public String patientPathologies(){
+        return "doctor/pathologies-patient";
+    }
+    
 }
