@@ -34,6 +34,8 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
 
         // Create initial roles
         createRoleIfNotFound(Role.ROLE_USER);
+        createRoleIfNotFound(Role.ROLE_ADMIN);
+        createRoleIfNotFound(Role.ROLE_DOCTOR);
 
         alreadySetup = true;
     }
