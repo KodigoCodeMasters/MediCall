@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <link rel="stylesheet" href="icofont.min.css">
+    <link rel="stylesheet" href="/css/style.css"/>
+    <script src="/webjars/jquery/jquery.min.js"></script>
+        <!--<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+
+<body class="bg-blue">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 mt-4">
+                <img src="back.png" alt="" class="back-icon">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8 col-sm-12 text-center bg-white my-5">
+                <div class="width-75">
+                    <form>
+                        <fieldset>
+                          <legend>Users</legend>
+                          <div class="mb-3">
+                            <label for="txtname" class="form-label">Names:</label>
+                            <input type="text" class="form-control" id="txtname">
+                          </div>
+                          <div class="mb-3">
+                            <label for="txtlastname" class="form-label">Last name:</label>
+                            <input type="text" class="form-control" id="txtlastname">
+                          </div>
+                          <div class="mb-3">
+                            <label for="txtuser" class="form-label">User:</label>
+                            <input type="text" class="form-control" id="txtuser">
+                          </div>
+                          <div class="mb-3">
+                            <label for="txtpassword" class="form-label">Password:</label>
+                            <input type="password" class="form-control" id="txtpassword">
+                          </div>
+                          <div class="mb-3">
+                            <label for="txtemail" class="form-label">Email:</label>
+                            <input type="email" class="form-control" id="txtemail">
+                          </div>
+                          <div class="mb-3">
+                            <label for="cbusertype" class="form-label">User type</label>
+                            <select id="cbusertype" class="form-select">
+                              <option>N/A</option>
+                            </select>
+                          </div>
+                          <div class="mb-3">
+                            <label for="cbuserstatus" class="form-label">User status</label>
+                            <select id="cbuserstatus" class="form-select">
+                              <option>N/A</option>
+                            </select>
+                          </div>
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                        </fieldset>
+                      </form>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-8 col-sm-12 text-center bg-white my-5">
+                <div class="width-75">
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Last name</th>
+                            <th scope="col">User</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">User Type</th>
+                            <th scope="col">Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>Marks12</td>
+                            <td>mark@gmail.com</td>
+                            <td>Admin</td>
+                            <td>asset</td>                            
+                          </tr>
+                          <tr>
+                            <th scope="row">2</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>Marks12</td>
+                            <td>mark@gmail.com</td>
+                            <td>Doctor</td>
+                            <td>asset</td>                      
+                          </tr>
+                          <tr>
+                            <th scope="row">3</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>Marks12</td>
+                            <td>mark@gmail.com</td>
+                            <td>Doctor</td>
+                            <td>asset</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
