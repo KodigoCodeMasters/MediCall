@@ -4,7 +4,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
     <head>
         <title>Medi-Call - Sign Up</title>
         <meta charset="UTF-8">
@@ -29,27 +29,53 @@ and open the template in the editor.
                         <img src="/img/transparent.png" alt="" class="logo-singup">
                         <h1 class="mb-5">Sign Up</h1>
                     </div>
-                    <form action="">
-                        <label for="fullname">Full Name</label>
-                        <input id="fullname" type="text" class="form-control mb-3 b-bottom-only" placeholder="Name...">
-                        <label for="email">Email</label>
-                        <input id="email" type="email" class="form-control mb-3 b-bottom-only" placeholder="Email address...">
-                        <label for="password">Password</label>
-                        <input id="password" type="password" class="form-control mb-3 b-bottom-only" placeholder="*****************">
-                        <label for="repeat">Repeat Password</label>
-                        <input id="repeat" type="password" class="form-control mb-4 b-bottom-only" placeholder="*****************">
+                    <div id="result" style="color: #ff0000"></div>
+                    <form action="#" th:action="@{/sign-up}" th:object="${userRegistrationForm}" method="post">
+                        <div class="form-group">
+                            <label for="fullname">Full Name</label>
+                            <input id="fullname" th:field="*{displayName}" type="text" class="form-control mb-3 b-bottom-only" placeholder="Name...">
+                            <p th:if="${#fields.hasErrors('displayName')}" th:errorclass="has-error" th:errors="*{displayName}" />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input id="email" th:field="*{email}" type="email" class="form-control mb-3 b-bottom-only" placeholder="Email address...">
+                            <p th:if="${#fields.hasErrors('email')}" th:errorclass="has-error" th:errors="*{email}" />
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input id="password" th:field="*{password}" type="password" class="form-control mb-3 b-bottom-only" placeholder="*****************">
+                            <p th:if="${#fields.hasErrors('password')}" th:errorclass="has-error" th:errors="*{password}" />
+                        </div>
+                        <div class="form-group">
+                            <label for="repeat">Repeat Password</label>
+                            <input id="repeat" type="password" th:field="*{matchingPassword}" class="form-control mb-4 b-bottom-only" placeholder="*****************">
+                            <p th:if="${#fields.hasErrors('matchingPassword')}" th:errorclass="has-error" th:errors="*{matchingPassword}" />
+                        </div>
+                        <input id="socialProvider" th:field="*{socialProvider}" type="text" style="display: none;">
                         <div align="right">
                             <a href="/" class="link-primary">Back</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <button class="btn btn-danger">Sign up</button>  
+                            <input type="submit" value="Submit" class="btn btn-danger">
                         </div>
+                        <div th:if="${#fields.hasErrors('global')}">
+                            <h3>Global errors:</h3>
+                            <p th:each="err : ${#fields.errors('global')}" th:text="${err}" class="has-error" />
+                        </div>
+                        <div class="clearfix"></div>
+                        <p class="content-divider center mt-3">
+                            <span>or</span>
+                        </p>
+                        <p class="text-center">
+                            Already have an account?
+                            <a href="/login">Login Now</a>
+                        </p>
                     </form>
-                    <div align="center">
-                        <a href="/oauth2/authorization/facebook" class="link-primary"><img src="https://cdn-icons-png.flaticon.com/512/145/145802.png" class="sign-up-media"></a>&nbsp;&nbsp;
-                        <a href="/oauth2/authorization/google" class="link-primary"><img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" class="sign-up-media"></a>&nbsp;&nbsp;
-                        <a href="/oauth2/authorization/github" class="link-primary"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" class="sign-up-media"></a>  
-                    </div>
                 </div>
             </div>
         </div>
     </body>
+    <script>
+        $(document).ready(function() {
+            $("#socialProvider").val("LOCAL");
+        });
+    </script>
 </html>

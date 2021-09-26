@@ -43,7 +43,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             "/",
             "/index",
             "/error",
-            "/login",
             "/sign-up",
             "/webjars/**",
             "/css/**",

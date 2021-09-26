@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,25 +38,56 @@
 <body class="text-center">
 
     <main class="form-signin">
-        <form>
+        <form class="login_form" name='loginForm' action="/login" method='POST' accept-charset=utf-8>
             <img class="mb-4" src="/img/white.png" alt="Medicall logo" width="100" height="100">
             <h1 class="h3 mb-3 fw-normal">USER LOGIN</h1>
-
+            <div th:if="${!msg.empty}">
+                <div th:class="'alert alert-'+${css}+ ' alert-dismissible'" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong th:text="${msg}"></strong>
+                </div>
+            </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-circle"></i></span>
-                <input type="text" class="form-control" id="floatingInput" placeholder="Username" aria-label="Username">
+                <input name="j_username" type="text" class="form-control" id="floatingInput" placeholder="Username" aria-label="Username">
             </div>
 
             <div class="input-group mb-3">
-                <input type="password" class="form-control" placeholder="Password" aria-label="Password">
+                <input name="j_password" type="password" class="form-control" placeholder="Password" aria-label="Password">
                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-unlock-fill"></i></span>
             </div>
 
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-            <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
+            <input type="submit" class="w-100 btn btn-lg btn-primary" value="Sign In">
         </form>
+        <div class="clearfix"></div>
+        <p class="content-divider center mt-3">
+            <span>or</span>
+        </p>
+        <form action="/auth/google" name="signup" id="signup">
+            <p class="social-login text-center">
+                Sign in with:
+                <a href="/oauth2/authorization/google" class="ml-2">
+                    <img alt="Login with Google" src="/img/google.png" class="btn-img">
+                </a>
+                <a href="/oauth2/authorization/facebook'">
+                    <img alt="Login with Facebook" src="/img/facebook.png" class="btn-img">
+                </a>
+                <a href="/oauth2/authorization/github'">
+                    <img alt="Login with Github" src="/img/github.png" class="btn-img">
+                </a>
+                <a href="/oauth2/authorization/linkedin">
+                    <img alt="Login with Linkedin" src="/img/linkedin.png" class="btn-img-linkedin">
+                </a>
+            </p>
+        </form>
+        <p class="text-center mb-2">
+            Don't have an account yet?
+            <a href="/sign-up">Sign Up Now</a>
+        </p>
+        <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
     </main>
-
 </body>
 
 </html>
