@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultation Medical</title>
+    <link rel="stylesheet" href="icofont.min.css">
+    <link rel="stylesheet" href="/css/style.css"/>
+    <script src="/webjars/jquery/jquery.min.js"></script>
+        <!--<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+
+<body class="bg-blue">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 mt-4">
+                <img src="back.png" alt="" class="back-icon">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8 col-sm-12 text-center bg-white my-5">
+                <div class="width-75">
+                    <form>
+                        <fieldset>
+                          <legend>Hospital Department</legend>
+                          <div class="mb-3">
+                            <label for="txtname" class="form-label">Department Name:</label>
+                            <input type="text" class="form-control" id="txtname">
+                          </div>
+                          <div class="mb-3">
+                            <label for="cbhospital" class="form-label">Hospital:</label>
+                            <select id="cbusertype" class="form-select">
+                              <option>N/A</option>
+                            </select>
+                          </div>
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                        </fieldset>
+                      </form>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-8 col-sm-12 text-center bg-white my-5">
+                <div class="width-75">
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name:</th>
+                            <th scope="col">Address</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">3</th>
+                            <td>Larry the Bird</td>
+                            <td>@twitter</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
