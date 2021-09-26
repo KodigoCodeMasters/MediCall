@@ -45,13 +45,6 @@ public class Appointment implements Serializable {
     @ManyToOne
     private Patient idPatient;
     
-    @JoinColumn(name = "id_user", referencedColumnName = "USER_ID")
-    @ManyToOne
-    private User idUser;
-    
-    @OneToMany(mappedBy = "idAppointment")
-    private List<AppointmentNotifications> appointmentNotificationsList;
-
     public Appointment() {
     }
 
@@ -89,22 +82,6 @@ public class Appointment implements Serializable {
 
     public void setIdPatient(Patient idPatient) {
         this.idPatient = idPatient;
-    }
-
-    public User getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(User idUser) {
-        this.idUser = idUser;
-    }
-
-    public List<AppointmentNotifications> getAppointmentNotificationsList() {
-        return appointmentNotificationsList;
-    }
-
-    public void setAppointmentNotificationsList(List<AppointmentNotifications> appointmentNotificationsList) {
-        this.appointmentNotificationsList = appointmentNotificationsList;
     }
     
 }
