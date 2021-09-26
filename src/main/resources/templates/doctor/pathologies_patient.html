@@ -6,8 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consultation Medical</title>
-    <link rel="stylesheet" href="icofont.min.css">
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/img/favi.ico" >
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap and CSS-->
+    <link rel="stylesheet" href="/css/icofont.min.css">
     <link rel="stylesheet" href="/css/style.css"/>
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <script src="/webjars/jquery/jquery.min.js"></script>
     <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
@@ -35,7 +40,7 @@
                           </div>
                           <div class="mb-3">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" id="chpathologies">
+                              <input class="form-check-input" type="checkbox" id="diabetes" onclick="countPathologies('diabetes')">
                               <label class="form-check-label" for="chpathologies">
                                 Diabetes
                               </label>
@@ -43,7 +48,7 @@
                           </div>
                           <div class="mb-3">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" id="chpathologies">
+                                <input class="form-check-input" type="checkbox" id="hypertension" onclick="countPathologies('hypertension')">
                               <label class="form-check-label" for="chpathologies">
                                 Hypertension
                               </label>
@@ -51,7 +56,7 @@
                           </div>
                           <div class="mb-3">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" id="chpathologies">
+                              <input class="form-check-input" type="checkbox" id="lupus" onclick="countPathologies('lupus')">
                               <label class="form-check-label" for="chpathologies">
                                 Lupus
                               </label>
@@ -81,7 +86,7 @@
                           <tr>
                             <th scope="row">2</th>
                             <td>Jacob</td>
-                            <td>Thornton</td>
+                            <td id="num_of_pathologies">Thornton</td>
                           </tr>
                           <tr>
                             <th scope="row">3</th>
@@ -94,7 +99,7 @@
             </div>
         </div>
     </div>
-    <script src="main.js"></script>
+    <script src="/js/pathologies.js"></script>
 </body>
 
 </html>
