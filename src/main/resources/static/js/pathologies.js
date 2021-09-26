@@ -8,4 +8,5 @@ function countPathologies(id){
         this.numberOfPathologies--;
     }
     document.getElementById("num_of_pathologies").innerHTML = numberOfPathologies;
+    document.getElementById("numOfPathologies").value = numberOfPathologies;
 }
