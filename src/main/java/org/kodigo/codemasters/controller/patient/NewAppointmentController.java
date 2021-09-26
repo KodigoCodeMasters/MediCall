@@ -16,6 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class NewAppointmentController {
     @RequestMapping("/patient/new-appointment")
     public String newappointment(){
-        return "patient/new-appointment";
+        return "/patient/new-appointment";
     }
 }
