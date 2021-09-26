@@ -28,7 +28,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
  */
 @RestController
 @RequestMapping("/patients")
-public class PatientController {
+public class PatientControllerWebService {
     
     @Autowired
     private IPatientService service;

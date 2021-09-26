@@ -5,12 +5,14 @@
  */
 package org.kodigo.codemasters.services;
 
-import org.kodigo.codemasters.model.Users;
+import org.kodigo.codemasters.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author Danny
  */
-public interface IUsersService extends ICRUD<Users, Integer>{
-    
+public interface UserRepository extends JpaRepository<User, Long>{
+    User findByEmail(String email);
+    boolean existsByEmail(String email);
 }

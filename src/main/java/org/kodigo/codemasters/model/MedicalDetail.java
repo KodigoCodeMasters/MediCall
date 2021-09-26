@@ -36,9 +36,9 @@ public class MedicalDetail implements Serializable {
     @Column(name = "work_experience")
     private String workExperience;
     
-    @JoinColumn(name = "id_user", referencedColumnName = "id_user")
+    @JoinColumn(name = "id_user", referencedColumnName = "USER_ID")
     @ManyToOne(optional = false)
-    private Users idUser;
+    private User idUser;
 
     public MedicalDetail() {
     }
@@ -77,11 +77,11 @@ public class MedicalDetail implements Serializable {
         this.workExperience = workExperience;
     }
 
-    public Users getIdUser() {
+    public User getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(Users idUser) {
+    public void setIdUser(User idUser) {
         this.idUser = idUser;
     }
     

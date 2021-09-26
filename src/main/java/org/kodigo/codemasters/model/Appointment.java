@@ -45,9 +45,9 @@ public class Appointment implements Serializable {
     @ManyToOne
     private Patient idPatient;
     
-    @JoinColumn(name = "id_user", referencedColumnName = "id_user")
+    @JoinColumn(name = "id_user", referencedColumnName = "USER_ID")
     @ManyToOne
-    private Users idUser;
+    private User idUser;
     
     @OneToMany(mappedBy = "idAppointment")
     private List<AppointmentNotifications> appointmentNotificationsList;
@@ -91,11 +91,11 @@ public class Appointment implements Serializable {
         this.idPatient = idPatient;
     }
 
-    public Users getIdUser() {
+    public User getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(Users idUser) {
+    public void setIdUser(User idUser) {
         this.idUser = idUser;
     }
 
