@@ -34,4 +34,9 @@ public class DoctorController {
         return "doctor/pathologies-patient";
     }
     
+    @RequestMapping("/doctor/view-appointment")
+    public String viewPathologies(){
+        return "doctor/view-appointment";
+    }
+    
 }
