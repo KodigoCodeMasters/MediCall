@@ -25,49 +25,52 @@
     </div>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-6 col-md-8 col-sm-12 text-center bg-white my-5">
+            <div class="col-lg-12 col-md-8 col-sm-12 text-center bg-white">
+                <img src="/img/portfolio/users.png" class="py-3 img-pathologies">
+            </div>
+            <div class="col-lg-5 col-md-8 col-sm-12 text-center bg-white mb-lg-5 mb-0">
                 <div class="width-75">
                     <form>
                         <fieldset>
                           <legend>Users</legend>
-                          <div class="mb-3">
+                          <div class="mb-2">
                             <label for="txtname" class="form-label">Names:</label>
                             <input type="text" class="form-control" id="txtname">
                           </div>
-                          <div class="mb-3">
+                          <div class="mb-2">
                             <label for="txtlastname" class="form-label">Last name:</label>
                             <input type="text" class="form-control" id="txtlastname">
                           </div>
-                          <div class="mb-3">
+                          <div class="mb-2">
                             <label for="txtuser" class="form-label">User:</label>
                             <input type="text" class="form-control" id="txtuser">
                           </div>
-                          <div class="mb-3">
+                          <div class="mb-2">
                             <label for="txtpassword" class="form-label">Password:</label>
                             <input type="password" class="form-control" id="txtpassword">
                           </div>
-                          <div class="mb-3">
+                          <div class="mb-2">
                             <label for="txtemail" class="form-label">Email:</label>
                             <input type="email" class="form-control" id="txtemail">
                           </div>
-                          <div class="mb-3">
+                          <div class="mb-2">
                             <label for="cbusertype" class="form-label">User type</label>
                             <select id="cbusertype" class="form-select">
                               <option>N/A</option>
                             </select>
                           </div>
-                          <div class="mb-3">
+                          <div class="mb-2">
                             <label for="cbuserstatus" class="form-label">User status</label>
                             <select id="cbuserstatus" class="form-select">
                               <option>N/A</option>
                             </select>
                           </div>
-                          <button type="submit" class="btn btn-primary">Submit</button>
+                          <button type="submit" class="btn btn-primary mb-3">Submit</button>
                         </fieldset>
                       </form>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-8 col-sm-12 text-center bg-white my-5">
+            <div class="col-lg-7 col-md-8 col-sm-12 text-center bg-white mb-5">
                 <div class="width-75">
                     <div th:switch="${users}">
                         <h2 th:case="null">No Users Yet.</h2>
@@ -91,8 +94,12 @@
                                             <p th:case="ROLE_ADMIN">Administrator</p>
                                             <p th:case="ROLE_DOCTOR">Doctor</p>
                                         </td>
-                                        <td>Edit</td>
-                                        <td>Delete</td>
+                                        <td>
+                                            <span  class="btn btn-success">Edit</span>
+                                        </td>
+                                        <td>
+                                            <span  class="btn btn-danger">Delete</span>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
