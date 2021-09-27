@@ -20,9 +20,11 @@ and open the template in the editor.
     <body class="bg-blue">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12 mt-4">
-                <img src="/img/portfolio/back.png" alt="" class="back-icon">
-            </div>
+            <a href="/patient/patient-menu">
+                <div class="col-12 mt-4">
+                    <img src="/img/portfolio/back.png" alt="" class="back-icon">
+                </div>
+            </a>
         </div>
     </div>
     <div class="container">
@@ -183,7 +185,7 @@ and open the template in the editor.
             contentType: "application/json",
             success: function(data){
                 alert("Insert Success")
-                window.location.reload();
+                window.location = "/patient/patient-menu";
             }
         })
     })
