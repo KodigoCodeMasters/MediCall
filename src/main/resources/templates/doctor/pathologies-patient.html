@@ -85,7 +85,7 @@
             </div>
             <div class="col-lg-6 col-md-8 col-sm-12 text-center bg-white py-5">
                 <div class="width-75">
-                    <table class="table">
+                    <table id="pathologies" class="table table-striped table-bordered">
                         <thead>
                           <tr>
                             <th scope="col">#</th>
@@ -93,29 +93,53 @@
                             <th scope="col">Number pathologies</th>
                           </tr>
                         </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td id="num_of_pathologies">Thornton</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>Larry the Bird</td>
-                            <td>@twitter</td>
-                          </tr>
-                        </tbody>
                       </table>
                 </div>
             </div>
         </div>
     </div>
-    <script src="/js/pathologies.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
+    <script>
+        $(document).ready(function(){
+        let dataObject = [];
+
+        //populate data table
+        $.ajax({
+            url: "/patientPathologies",
+            type: "GET",
+            success: function(result){
+                console.log(result);
+                result.forEach(element => {
+                    dataObject.push({
+                        id : element.idPatientPathologies,
+                        patient: element.idPatient.userId.displayName, 
+                        pathologies : element.idPathologies.pathologies
+                    })
+                })
+                $("#pathologies").DataTable({
+                    data : dataObject,
+                    columns : [
+                        {"data": "id"},
+                        {"data": "patient"},
+                        {"data": "pathologies"},
+                    ],
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'copy', 'csv', 'excel', 'pdf', 'print'
+                    ]
+                })
+            }
+        })
+    })
+    </script>
 </body>
 
 </html>

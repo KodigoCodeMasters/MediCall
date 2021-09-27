@@ -57,65 +57,67 @@
             </div>
             <div class="col-lg-6 col-md-8 col-sm-12 text-center bg-white my-5">
                 <div class="width-75">
-                    <table class="table">
+                    <table id="patient" class="table table-striped table-bordered">
                         <thead>
                           <tr>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Last name</th>
                             <th scope="col">Gender</th>
-                            <th scope="col">User</th>
-                            <th scope="col">Email</th>
                             <th scope="col">Pregnancy</th>
                             <th scope="col">Date birthday</th>
-                            <th scope="col">Registration date</th>
-                            <th scope="col">Status</th>
                           </tr>
                         </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>Male</td>
-                            <td>Marks12</td>
-                            <td>mark@gmail.com</td>
-                            <td>No</td>
-                            <td>12/04/2002</td>
-                            <td>05/07/2003</td>
-                            <td>asset</td>                            
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>Male</td>
-                            <td>Marks12</td>
-                            <td>mark@gmail.com</td>
-                            <td>No</td>
-                            <td>12/04/2002</td>
-                            <td>05/07/2003</td>
-                            <td>asset</td>                      
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>Male</td>
-                            <td>Marks12</td>
-                            <td>mark@gmail.com</td>
-                            <td>No</td>
-                            <td>12/04/2002</td>
-                            <td>05/07/2003</td>
-                            <td>asset</td>
-                          </tr>
-                        </tbody>
                       </table>
                 </div>
             </div>
         </div>
     </div>
-    <script src="main.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
+    <script>
+        $(document).ready(function(){
+        let dataObject = [];
+
+        //populate data table
+        $.ajax({
+            url: "/patients",
+            type: "GET",
+            success: function(result){
+                console.log(result);
+                result.forEach(element => {
+                    dataObject.push({
+                        id : element.idPatient,
+                        patient: element.userId.displayName,
+                        date : element.dateBirth,
+                        gender : element.gender,
+                        pregnancy : element.pregnancy
+                    })
+                })
+                $("#patient").DataTable({
+                    data : dataObject,
+                    columns : [
+                        {"data": "id"},
+                        {"data": "patient"},
+                        {"data": "gender"},
+                        {"data": "pregnancy"},
+                        {"data": "date"},
+                    ],
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'copy', 'csv', 'excel', 'pdf', 'print'
+                    ]
+                })
+            }
+        })
+    })
+    </script>
 </body>
 
 </html>
