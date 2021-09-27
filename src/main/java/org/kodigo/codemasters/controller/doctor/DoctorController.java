@@ -38,4 +38,5 @@ public class DoctorController {
     public String viewPathologies(){
         return "doctor/view-appointment";
     }
+    
 }
