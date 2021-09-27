@@ -32,8 +32,8 @@ public class AppointmentStatus implements Serializable {
     @Column(name = "appointment_status")
     private String appointmentStatus;
     
-    @OneToMany(mappedBy = "idAppointmentStatus")
-    private List<Appointment> appointmentList;
+//    @OneToMany(mappedBy = "idAppointmentStatus")
+//    private List<Appointment> appointmentList;
 
     public AppointmentStatus() {
     }
@@ -63,12 +63,12 @@ public class AppointmentStatus implements Serializable {
         this.appointmentStatus = appointmentStatus;
     }
 
-    public List<Appointment> getAppointmentList() {
-        return appointmentList;
-    }
-
-    public void setAppointmentList(List<Appointment> appointmentList) {
-        this.appointmentList = appointmentList;
-    }
+//    public List<Appointment> getAppointmentList() {
+//        return appointmentList;
+//    }
+//
+//    public void setAppointmentList(List<Appointment> appointmentList) {
+//        this.appointmentList = appointmentList;
+//    }
     
 }

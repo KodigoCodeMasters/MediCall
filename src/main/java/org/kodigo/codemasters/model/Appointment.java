@@ -45,6 +45,8 @@ public class Appointment implements Serializable {
     @ManyToOne
     private Patient idPatient;
     
+    
+    
     public Appointment() {
     }
 
