@@ -26,9 +26,7 @@ import javax.persistence.TemporalType;
 public class Binnacle implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  
     @Column(name = "id_mov")
     private Integer idMov;
     

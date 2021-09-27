@@ -33,19 +33,19 @@ public class Patient implements Serializable {
     @Column(name = "id_patient")
     private Integer idPatient;
     
-    @Lob
-    @Column(name = "patient_profile")
-    private byte[] patientProfile;
+    @Column(name = "date_birth")
+    @Temporal(TemporalType.DATE)
+    private Date dateBirth;
         
     @Column(name = "gender")
     private String gender;
     
+    @Lob
+    @Column(name = "patient_profile")
+    private byte[] patientProfile;
+    
     @Column(name = "pregnancy")
     private String pregnancy;
-    
-    @Column(name = "date_birth")
-    @Temporal(TemporalType.DATE)
-    private Date dateBirth;
     
     @JoinColumn(name ="user_id", referencedColumnName = "user_id")
     @ManyToOne
