@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.kodigo.codemasters.controller.doctor;
+package org.kodigo.codemasters.controller.patient;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -14,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Néstor Recinos
  */
 @Controller
-public class PatienPathologiesController {
-    @RequestMapping("/patient/pathologies")
-    public String patient_pathologies(){
-        return "doctor/pathologies_patient";
+public class ReviewAppointmentController {
+    @RequestMapping("/patient/review-appointment")
+    public String reviewappointment(){
+        return "/patient/review-appointment";
     }
 }
