@@ -6,7 +6,9 @@
 package org.kodigo.codemasters.controller.admin;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
@@ -16,8 +18,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class IndexAdminController {
     
-    @RequestMapping("/admin/admin_menu")
-    public String index(){
-        return "admin/admin_menu";
+    @GetMapping("/admin/admin-menu")
+    public ModelAndView home(@RequestParam(value = "view", required = false) String view){
+        ModelAndView model = new ModelAndView("admin/admin-menu");
+        model.addObject("title", "Medi-Call Administration Panel");
+        model.addObject("view", view);
+        return model;
     }
 }

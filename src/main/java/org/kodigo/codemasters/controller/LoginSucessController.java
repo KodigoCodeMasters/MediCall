@@ -24,7 +24,7 @@ public class LoginSucessController {
         String role = authResult.getAuthorities().toString();
         
         if(role.contains("ROLE_ADMIN")){
-            response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/admin/admin_menu"));
+            response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/admin/admin-menu"));
         }else if(role.contains("ROLE_USER")){
             response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/patient/patient-menu"));
         }else if(role.contains("ROLE_DOCTOR")){

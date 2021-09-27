@@ -45,6 +45,9 @@ public class User implements Serializable {
 
     @Column(name = "enabled", columnDefinition = "BIT", length = 1)
     private boolean enabled;
+    
+    @Column(name = "validated", columnDefinition = "BIT", length = 1)
+    private boolean validated;
 
     @Column(name = "DISPLAY_NAME")
     private String displayName;
@@ -151,4 +154,14 @@ public class User implements Serializable {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+
+    public boolean isValidated() {
+        return validated;
+    }
+
+    public void setValidated(boolean validated) {
+        this.validated = validated;
+    }
+    
+    
 }

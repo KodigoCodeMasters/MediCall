@@ -79,6 +79,7 @@ public class UserServiceImpl implements UserService {
 		user.setRoles(roles);
 		user.setProvider(formDTO.getSocialProvider().getProviderType());
 		user.setEnabled(true);
+                user.setValidated(false);
 		user.setProviderUserId(formDTO.getProviderUserId());
 		return user;
 	}
