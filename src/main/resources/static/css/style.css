@@ -93,3 +93,7 @@ and open the template in the editor.
 	width: 100%;
 	z-index: -1;
 }
+/*Pathologies*/
+.img-pathologies{
+    width: 15%;
+}
