@@ -29,7 +29,7 @@
     </div>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-6 col-md-8 col-sm-12 text-center bg-white my-5">
+            <div class="col-lg-10 col-md-8 col-sm-12 text-center bg-white my-5">
                 <div class="width-75">
                     <table id="appointment" class="table table-striped table-bordered">
                         <thead>
@@ -38,6 +38,8 @@
                             <th scope="col">patient</th>
                             <th scope="col">Date</th>
                             <th scope="col">Doctor</th>
+                            <th scope="col">Hospital</th>
+                            <th scope="col">Department</th>
                           </tr>
                         </thead>
                       </table>
@@ -66,17 +68,23 @@
                 console.log(result);
                 result.forEach(element => {
                     dataObject.push({
-                        id : element.id_appointment,
-                        date : element.appointment_date,
-                        patient: element.userId.displayName,
+                        id : element.idAppointment,
+                        date : element.appointmentDate,
+                        patient: element.idPatient.userId.displayName,
+                        doctor : element.idDoctor.idUser.displayName,
+                        hospital : element.idDoctor.idDepartment.idHospital.hospitalName,
+                        department: element.idDoctor.idDepartment.departmentName
                     })
                 })
                 $("#appointment").DataTable({
                     data : dataObject,
                     columns : [
                         {"data": "id"},
+                        {"data": "patient"},
                         {"data": "date"},
-                        {"data": "patient"}
+                        {"data": "doctor"},
+                        {"data": "hospital"},
+                        {"data": "department"},
                     ],
                     dom: 'Bfrtip',
                     buttons: [
