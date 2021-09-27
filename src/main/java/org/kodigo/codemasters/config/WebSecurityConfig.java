@@ -86,7 +86,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.defaultSuccessUrl("/success")//
 				.failureUrl("/login?error=true").failureHandler(authenticationFailureHandler)//
 				.usernameParameter("j_username")//
-				.passwordParameter("j_password").and().oauth2Login().loginPage("/login").failureHandler(authenticationFailureHandler).defaultSuccessUrl("/sucess").userInfoEndpoint()
+				.passwordParameter("j_password").and().oauth2Login().loginPage("/login").failureHandler(authenticationFailureHandler).defaultSuccessUrl("/success").userInfoEndpoint()
 				.oidcUserService(customOidcUserService).userService(customOAuth2UserService).and().tokenEndpoint()
 				.accessTokenResponseClient(authorizationCodeTokenResponseClient());
 		// Logout Config
