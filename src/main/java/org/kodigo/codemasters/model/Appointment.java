@@ -45,7 +45,9 @@ public class Appointment implements Serializable {
     @ManyToOne
     private Patient idPatient;
     
-    
+    @JoinColumn(name = "id_doctor", referencedColumnName = "id_medical_detail")
+    @ManyToOne
+    private MedicalDetail idDoctor;
     
     public Appointment() {
     }
@@ -85,5 +87,15 @@ public class Appointment implements Serializable {
     public void setIdPatient(Patient idPatient) {
         this.idPatient = idPatient;
     }
+
+    public MedicalDetail getIdDoctor() {
+        return idDoctor;
+    }
+
+    public void setIdDoctor(MedicalDetail idDoctor) {
+        this.idDoctor = idDoctor;
+    }
+    
+    
     
 }
