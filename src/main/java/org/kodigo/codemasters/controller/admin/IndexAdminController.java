@@ -5,7 +5,9 @@
  */
 package org.kodigo.codemasters.controller.admin;
 
+import org.kodigo.codemasters.services.UserRepository;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +21,14 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class IndexAdminController {
     
+    private final UserRepository userRepository;
+
+    public IndexAdminController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+    
+    
+    
     @GetMapping("/admin/admin-menu")
     public ModelAndView home(@RequestParam(value = "view", required = false) String view){
         ModelAndView model = new ModelAndView("admin/admin-menu");
@@ -28,14 +38,16 @@ public class IndexAdminController {
 
     }
     
-    @RequestMapping("/admin/users")
-    public String user(){
+    @GetMapping("/admin/users")
+    public String user(Model model){
+        model.addAttribute("users", userRepository.findAll());
         return "admin/users";
     }
-    
+           
     @RequestMapping("/admin/hospital_details")
-    public String hospitaldetails(){
-        return "admin/hospital_details";
+    public ModelAndView hospitalDetails(@RequestParam(value = "view", required = false) String view){
+        ModelAndView model = new ModelAndView("admin/hospital_details");
+        return model;
     }
     
     @RequestMapping("/admin/hospital_department")

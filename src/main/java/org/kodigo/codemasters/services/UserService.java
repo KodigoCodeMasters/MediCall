@@ -1,5 +1,6 @@
 package org.kodigo.codemasters.services;
 
+import java.util.List;
 import org.kodigo.codemasters.dto.LocalUser;
 import org.kodigo.codemasters.dto.UserRegistrationForm;
 import org.kodigo.codemasters.exception.UserAlreadyExistAuthenticationException;
@@ -19,4 +20,5 @@ public interface UserService {
 	public User registerNewUser(UserRegistrationForm UserRegistrationForm) throws UserAlreadyExistAuthenticationException;
 	User findUserByEmail(String email);
 	LocalUser processUserRegistration(String registrationId, Map<String, Object> attributes, OidcIdToken idToken, OidcUserInfo userInfo);
+        List<User> findAll();
 }

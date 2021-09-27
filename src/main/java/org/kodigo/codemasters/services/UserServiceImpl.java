@@ -8,6 +8,7 @@ package org.kodigo.codemasters.services;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -122,4 +123,9 @@ public class UserServiceImpl implements UserService {
 		return UserRegistrationForm.getBuilder().addProviderUserID(oAuth2UserInfo.getId()).addDisplayName(oAuth2UserInfo.getName()).addEmail(oAuth2UserInfo.getEmail())
 				.addSocialProvider(GeneralUtils.toSocialProvider(registrationId)).addPassword("changeit").build();
 	}
+        
+        @Override
+        public List<User> findAll(){
+            return userRepository.findAll();
+        }
 }

@@ -69,48 +69,29 @@
             </div>
             <div class="col-lg-6 col-md-8 col-sm-12 text-center bg-white my-5">
                 <div class="width-75">
-                    <table class="table">
-                        <thead>
-                          <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Last name</th>
-                            <th scope="col">User</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">User Type</th>
-                            <th scope="col">Status</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>Marks12</td>
-                            <td>mark@gmail.com</td>
-                            <td>Admin</td>
-                            <td>asset</td>                            
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>Marks12</td>
-                            <td>mark@gmail.com</td>
-                            <td>Doctor</td>
-                            <td>asset</td>                      
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>Marks12</td>
-                            <td>mark@gmail.com</td>
-                            <td>Doctor</td>
-                            <td>asset</td>
-                          </tr>
-                        </tbody>
-                      </table>
+                    <div th:switch="${users}">
+                        <h2 th:case="null">No Users Yet.</h2>
+                        <div th:case="*">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Full Name</th>
+                                        <th scope="col">Email Address</th>
+                                        <th scope="col">Edit</th>
+                                        <th scope="col">Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="user : ${users}">
+                                        <td scope="row" th:text="${user.displayName}"></td>
+                                        <td th:text="${user.email}"></td>
+                                        <td>Edit</td>
+                                        <td>Delete</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

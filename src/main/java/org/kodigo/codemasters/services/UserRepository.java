@@ -5,6 +5,7 @@
  */
 package org.kodigo.codemasters.services;
 
+import java.util.List;
 import org.kodigo.codemasters.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -15,4 +16,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface UserRepository extends JpaRepository<User, Long>{
     User findByEmail(String email);
     boolean existsByEmail(String email);
+    List<User> findAll();
 }
