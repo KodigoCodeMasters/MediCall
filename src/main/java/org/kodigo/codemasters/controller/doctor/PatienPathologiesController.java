@@ -16,8 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class PatienPathologiesController {
     @RequestMapping("/patient/pathologies")
-    public String patient_pathologies(Model model){
-        model.addAttribute("pathologies");
+    public String patient_pathologies(){
         return "doctor/pathologies_patient";
     }
 }

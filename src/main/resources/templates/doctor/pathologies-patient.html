@@ -43,16 +43,6 @@
                               <option>N/A</option>
                             </select>
                           </div>
-                          <div th:each="pathology : ${pathologies}">
-                              <div class="mb-3">
-                            <div class="form-check">
-                              <!--<input class="form-check-input" type="checkbox" th:id="${pathology.id_payhologies}" th:value="${pathology.id_payhologies}" onclick="countPathologies('th:id=\"${pathology.id_payhologies\"}')">-->
-                              <label class="form-check-label" for="chpathologies" th:text="${pathology.id_pathologies}">
-                                
-                              </label>
-                            </div>
-                          </div>
-                          </div>
                           <div class="mb-3">
                             <div class="form-check">
                               <input class="form-check-input" type="checkbox" id="diabetes" onclick="countPathologies('diabetes')">
