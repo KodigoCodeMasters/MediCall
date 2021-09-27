@@ -40,7 +40,7 @@ public class IndexAdminController {
     
     @GetMapping("/admin/users")
     public String user(Model model){
-        model.addAttribute("users", userRepository.findAll());
+        model.addAttribute("users", userRepository.findAllWithRoles());
         return "admin/users";
     }
            

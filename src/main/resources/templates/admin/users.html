@@ -17,7 +17,7 @@
    <div class="container-fluid">
         <div class="row">
             <div class="col-12 mt-4">
-                <a href="/admin/admin_menu">
+                <a href="/admin/admin-menu">
                     <img src="/img/portfolio/back.png" alt="" class="back-icon">
                 </a>
             </div>
@@ -77,6 +77,7 @@
                                     <tr>
                                         <th scope="col">Full Name</th>
                                         <th scope="col">Email Address</th>
+                                        <th scope="col">Role</th>
                                         <th scope="col">Edit</th>
                                         <th scope="col">Delete</th>
                                     </tr>
@@ -85,6 +86,11 @@
                                     <tr th:each="user : ${users}">
                                         <td scope="row" th:text="${user.displayName}"></td>
                                         <td th:text="${user.email}"></td>
+                                        <td th:switch="${user.roles[0].name}">
+                                            <p th:case="ROLE_USER">Patient</p>
+                                            <p th:case="ROLE_ADMIN">Administrator</p>
+                                            <p th:case="ROLE_DOCTOR">Doctor</p>
+                                        </td>
                                         <td>Edit</td>
                                         <td>Delete</td>
                                     </tr>

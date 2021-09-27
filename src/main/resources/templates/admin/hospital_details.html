@@ -6,11 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consultation Medical</title>
-    <link rel="stylesheet" href="icofont.min.css">
     <link rel="stylesheet" href="/css/style.css"/>
     <script src="/webjars/jquery/jquery.min.js"></script>
     <!--<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 
 <body class="bg-blue">
@@ -27,7 +27,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-6 col-md-8 col-sm-12 text-center bg-white my-5">
                 <div class="width-75">
-                    <form>
+                    <form id="formDetails" method="post" action="">
                         <fieldset>
                           <legend>Hospital details</legend>
                           <div class="mb-3">
@@ -40,7 +40,7 @@
                           </div>
                           <div class="mb-3">
                             <label for="txtaddress" class="form-label">telephone</label>
-                            <input type="text" class="form-control" id="txtaddress">
+                            <input type="text" class="form-control" id="txttelephone">
                           </div>
                           <button type="submit" class="btn btn-primary">Submit</button>
                         </fieldset>
@@ -49,7 +49,7 @@
             </div>
             <div class="col-lg-6 col-md-8 col-sm-12 text-center bg-white my-5">
                 <div class="width-75">
-                    <table class="table">
+                    <table class="table" id="hospitalDetails">
                         <thead>
                           <tr>
                             <th scope="col">#</th>
@@ -58,32 +58,58 @@
                             <th scope="col">telephone</th>
                           </tr>
                         </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>Otto</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>Thornton</td>                            
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>Larry the Bird</td>
-                            <td>@twitter</td>
-                            <td>@twitter</td>
-                          </tr>
-                        </tbody>
                       </table>
                 </div>
             </div>
         </div>
     </div>
     <script src="/js/main.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 </body>
-
+<script>
+    $(document).ready(function(){
+        
+        //Populate Data from Database (GET request)
+        $.ajax({
+            url: '/hospitalDetails',
+            type: "GET",
+            success: function(result){
+              $("#hospitalDetails").DataTable({
+                    data : result,
+                    columns : [
+                        {"data": "idHospitalDetails"},
+                        {"data": "hospitalName"},
+                        {"data": "address"},
+                        {"data": "telephone"},
+                    ]
+                })
+            }
+            
+        })
+    })
+    
+    //Insert hospital details
+    $("#formDetails").on("submit", function(e){
+        var name = $("#txtname").val()
+        var address = $("#txtaddress").val()
+        var telephone = $("#txttelephone").val()
+        
+        const sendInfo = {
+            hospitalName : name,
+            address: address,
+            telephone: telephone
+        }
+        
+        e.preventDefault();
+        $.ajax({
+            url: "/hospitalDetails",
+            type: "POST",
+            data: JSON.stringify(sendInfo),
+            contentType: "application/json",
+            success: function(data){
+                alert("Insert Success")
+            }
+        })
+    })
+</script>
 </html>
