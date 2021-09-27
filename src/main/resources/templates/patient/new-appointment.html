@@ -20,11 +20,9 @@ and open the template in the editor.
     <body class="bg-blue">
     <div class="container-fluid">
         <div class="row">
-            <a href="/patient/patient-menu">
-                <div class="col-12 mt-4">
-                    <img src="/img/portfolio/back.png" alt="" class="back-icon">
-                </div>
-            </a>
+            <div class="col-12 mt-4">
+                <img src="/img/portfolio/back.png" alt="" class="back-icon">
+            </div>
         </div>
     </div>
     <div class="container">
@@ -36,7 +34,7 @@ and open the template in the editor.
                     <h3 class="text-blue-dark mb-3">New Appointment</h3>
                 </div>
                 <div class="width-75">
-                    <form action="" id="newappointment" method="post">
+                    <form action="">
                         <div id="hospital_section">
                             <label for="hospitals">Select the Hospital</label> <br><br>
                             <select name="hospitals" id="hospitals" class="form-select mb-5">
@@ -44,7 +42,7 @@ and open the template in the editor.
                             </select>
                             <div align="right">
                                 <div class="btn-container-newApp">
-                                    <span class="btn btn-danger" onclick="change('hospital_section','area_section')">Next</span>
+                                    <span class="btn btn-danger" onclick="change('hospital_section','area_section')">Area</span>
                                 </div>
                             </div>
                         </div>
@@ -55,10 +53,10 @@ and open the template in the editor.
                             </select>
                             <div class="btn-container-general">
                                 <div class="btn-container-newApp text-start">
-                                    <span class="btn btn-link" onclick="change('area_section','hospital_section')">Previous</span>
+                                    <span class="btn btn-link" onclick="change('area_section','hospital_section')">Hospital</span>
                                 </div>
                                 <div class="btn-container-newApp text-end">
-                                    <span class="btn btn-danger" onclick="change('area_section','doctor_section')">Next</span>
+                                    <span class="btn btn-danger" onclick="change('area_section','doctor_section')">Date</span>
                                 </div>
                             </div>
                         </div>
@@ -69,10 +67,10 @@ and open the template in the editor.
                             </select>
                             <div class="btn-container-general">
                                 <div class="btn-container-newApp text-start">
-                                    <span class="btn btn-link" onclick="change('doctor_section','area_section')">Previous</span>
+                                    <span class="btn btn-link" onclick="change('doctor_section','area_section')">Area</span>
                                 </div>
                                 <div class="btn-container-newApp text-end">
-                                    <span class="btn btn-danger" onclick="change('doctor_section','date_section')">Next</span>
+                                    <span class="btn btn-danger" onclick="change('doctor_section','date_section')">Doctor</span>
                                 </div>
                             </div>
                         </div>
@@ -83,10 +81,10 @@ and open the template in the editor.
                             <br> <br>
                             <div class="btn-container-general">
                                 <div class="btn-container-newApp text-start">
-                                    <span class="btn btn-link" onclick="change('date_section','doctor_section')">Previous</span>
+                                    <span class="btn btn-link" onclick="change('date_section','doctor_section')">Doctor</span>
                                 </div>
                                 <div class="btn-container-newApp text-end">
-                                    <span class="btn btn-danger" onclick="change('date_section','hour_section')">Next</span>
+                                    <span class="btn btn-danger" onclick="change('date_section','hour_section')">Hour</span>
                                 </div>
                             </div>
                         </div>
@@ -94,14 +92,14 @@ and open the template in the editor.
                         <div class="d-none" id="hour_section">
                             <label for="hours">Select the hour</label> <br><br>
                             <select name="hours" id="hours" class="form-select mb-5">
-                                <option value="">07:00:00</option>
+                                <option value="">7:00</option>
                             </select>
                             <div class="btn-container-general">
                                 <div class="btn-container-newApp text-start">
-                                    <span class="btn btn-link" onclick="change('hour_section', 'date_section')">Previous</span>
+                                    <span class="btn btn-link" onclick="change('hour_section', 'date_section')">Date</span>
                                 </div>
                                 <div class="btn-container-newApp text-end">
-                                    <button type="submit" class="btn btn-danger">Save!</button>
+                                    <button class="btn btn-danger">Save!</button>
                                 </div>
                             </div>
                         </div>
@@ -113,81 +111,4 @@ and open the template in the editor.
     </div>
     <script src="/js/main.js"></script>
 </body>
-<script>
-    $(document).ready(function(){
-        let hospitals = []
-        $.ajax({
-            url: "/hospitalDetails",
-            type: "GET",
-            success: function(result){
-               $("#hospitals").empty() 
-               $("#hospitals").append(new Option("Select an Option"))
-               result.forEach(element => {
-                   $("#hospitals").append(new Option(element.hospitalName, element.idHospitalDetails))
-               })
-            }
-        })
-    })
-    
-    $("#hospitals").on("change", function(){
-        let idHospital = $("#hospitals").val()
-        $.ajax({
-            url: "/hospitals",
-            type: "GET",
-            success: function(result){
-                $("#areas").empty()
-                $("#areas").append(new Option("Select an Option"))
-                result.forEach(element => {
-                    if(element.idHospital.idHospitalDetails == idHospital){
-                        $("#areas").append(new Option(element.departmentName, element.idHospitalDepartment))
-                    }
-                })
-            }
-        })
-    })
-    
-    $("#areas").on("change", function(){
-        let idDepartment = $("#areas").val()
-        $.ajax({
-            url: "/medicaldetail",
-            type: "GET",
-            success: function(result){
-                $("#doctors").empty()
-                $("#doctors").append(new Option("Select an Option"))
-                result.forEach(element => {
-                    if(element.idDepartment.idHospitalDepartment == idDepartment){
-                        $("#doctors").append(new Option(element.idUser.displayName, element.idMedicalDetail))
-                    }
-                })
-            }
-        })
-    })
-    
-    $("#newappointment").on("submit", function(e){
-        e.preventDefault();
-        
-        let appointmentDate = $("#dates").val()+" "+$("#hours").val()
-        let idAppointmentStatus = 1
-        let idPatient = 1
-        let idDoctor = $("#doctors").val()
-        
-        const sendData = {
-            appointmentDate : appointmentDate,
-            idAppointmentStatus : idAppointmentStatus,
-            idPatient : idPatient,
-            idDoctor : idDoctor
-        }
-        
-        $.ajax({
-            url: "/appointments",
-            type: "POST",
-            data: JSON.stringify(sendData),
-            contentType: "application/json",
-            success: function(data){
-                alert("Insert Success")
-                window.location = "/patient/patient-menu";
-            }
-        })
-    })
-</script>
 </html>
