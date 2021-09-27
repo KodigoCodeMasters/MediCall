@@ -39,7 +39,6 @@ import org.kodigo.codemasters.oauth2.OAuth2AccessTokenResponseConverterWithDefau
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	private static final String[] IGNORED_RESOURCE_LIST = new String[]{
-            "/newappointment",
             "/",
             "/index",
             "/error",
@@ -48,7 +47,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             "/css/**",
             "/js/**",
             "/img/**"
-        };;
+        };
 
 	@Autowired
 	private AuthenticationFailureHandler authenticationFailureHandler;
