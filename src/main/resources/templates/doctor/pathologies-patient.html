@@ -34,41 +34,22 @@
             </div>
             <div class="col-lg-6 col-md-8 col-sm-12 text-center bg-white py-5">
                 <div class="width-75">
-                    <form>
+                    <form id="formPathology">
                         <fieldset>
-                          <legend>Pathologies patient</legend>
+                          <legend>Patient Pathologies</legend>
                           <div class="mb-3">
                             <label for="cbpatient" class="form-label">Select patient</label>
                             <select id="cbpatient" class="form-select">
-                              <option>N/A</option>
+                              <option>Loading...</option>
                             </select>
                           </div>
                           <div class="mb-3">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" id="diabetes" onclick="countPathologies('diabetes')">
-                              <label class="form-check-label" for="chpathologies">
-                                Diabetes
-                              </label>
-                            </div>
+                            <label for="cbpathology" class="form-label">Select pathology</label>
+                            <select id="cbpathology" class="form-select">
+                              <option>Loading...</option>
+                            </select>
                           </div>
-                          <div class="mb-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="hypertension" onclick="countPathologies('hypertension')">
-                              <label class="form-check-label" for="chpathologies">
-                                Hypertension
-                              </label>
-                            </div>
-                          </div>
-                          <div class="mb-3">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" id="lupus" onclick="countPathologies('lupus')">
-                              <label class="form-check-label" for="chpathologies">
-                                Lupus
-                              </label>
-                            </div>
-                          </div>
-                          <input type="hidden" id="numOfPathologies" name="numOfPathologies">
-                          <button type="submit" class="btn btn-danger">Submit</button>
+                          <button type="submit" class="btn btn-danger">Register Pathology</button>
                         </fieldset>
                       </form>
                 </div>
@@ -80,7 +61,7 @@
                           <tr>
                             <th scope="col">#</th>
                             <th scope="col">patient</th>
-                            <th scope="col">Number pathologies</th>
+                            <th scope="col">Pathologies</th>
                           </tr>
                         </thead>
                       </table>
@@ -99,36 +80,82 @@
     <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
     <script>
         $(document).ready(function(){
-        let dataObject = [];
+            let dataObject = [];
 
-        //populate data table
-        $.ajax({
-            url: "/patientPathologies",
-            type: "GET",
-            success: function(result){
-                console.log(result);
-                result.forEach(element => {
-                    dataObject.push({
-                        id : element.idPatientPathologies,
-                        patient: element.idPatient.userId.displayName, 
-                        pathologies : element.idPathologies.pathologies
+            //populate data table
+            $.ajax({
+                url: "/patientPathologies",
+                type: "GET",
+                success: function(result){
+                    console.log(result);
+                    result.forEach(element => {
+                        dataObject.push({
+                            id : element.idPatientPathologies,
+                            patient: element.idPatient.userId.displayName, 
+                            pathologies : element.idPathologies.pathologies
+                        })
                     })
-                })
-                $("#pathologies").DataTable({
-                    data : dataObject,
-                    columns : [
-                        {"data": "id"},
-                        {"data": "patient"},
-                        {"data": "pathologies"},
-                    ],
-                    dom: 'Bfrtip',
-                    buttons: [
-                        'copy', 'csv', 'excel', 'pdf', 'print'
-                    ]
-                })
+                    $("#pathologies").DataTable({
+                        data : dataObject,
+                        columns : [
+                            {"data": "id"},
+                            {"data": "patient"},
+                            {"data": "pathologies"},
+                        ],
+                        dom: 'Bfrtip',
+                        buttons: [
+                            'copy', 'csv', 'excel', 'pdf', 'print'
+                        ]
+                    })
+                }
+            })
+            
+            $.ajax({
+                url: "/patients",
+                type: "GET",
+                success: function(result){
+                    console.log(result);
+                    $("#cbpatient").empty()
+                    result.forEach(element => {
+                        $("#cbpatient").append(new Option(element.userId.displayName, element.idPatient))
+                    })
+                }
+            })
+            
+            $.ajax({
+                url: "/pathologies",
+                type: "GET",
+                success: function(result){
+                    $("#cbpathology").empty()
+                    result.forEach(element => {
+                        $("#cbpathology").append(new Option(element.pathologies, element.idPathologies))
+                    })
+                }
+            })
+        })
+        
+        $("#formPathology").on("submit", function(e){
+            e.preventDefault()
+            
+            let idPathologies = $("#cbpathology").val()
+            let idPatient = $("#cbpatient").val()
+            
+            const sendData  = {
+                idPathologies: idPathologies,
+                idPatient: idPatient
+            }
+            
+            $.ajax({
+            url: "/patientPathologies",
+            type: "POST",
+            data: JSON.stringify(sendData),
+            contentType: "application/json",
+            success: function(data){
+                alert("Insert Success")
+                window.location.reload();
             }
         })
-    })
+        })
     </script>
 </body>
 
