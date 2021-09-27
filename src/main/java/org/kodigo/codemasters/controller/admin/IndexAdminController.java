@@ -59,4 +59,8 @@ public class IndexAdminController {
     public String medicaldetails(){
         return "admin/medical-details";
     }
+    @RequestMapping("/admin/profile")
+    public String profile(){
+        return "admin/profile";
+    }
 }
